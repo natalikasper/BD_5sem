@@ -1,0 +1,157 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=Cp1251">
+<!-- base href="http://apexdev.us.oracle.com:7778/pls/apx11w/" -->
+<style type="text/css">
+table {
+background-color:#F2F2F5;
+border-width:1px 1px 0px 1px;
+border-color:#C9CBD3;
+border-style:solid;
+}
+td {
+color:#000000;
+font-family:Tahoma,Arial,Helvetica,Geneva,sans-serif;
+font-size:9pt;
+background-color:#EAEFF5;
+padding:8px;
+background-color:#F2F2F5;
+border-color:#ffffff #ffffff #cccccc #ffffff;
+border-style:solid solid solid solid;
+border-width:1px 0px 1px 0px;
+}
+th {
+font-family:Tahoma,Arial,Helvetica,Geneva,sans-serif;
+font-size:9pt;
+padding:8px;
+background-color:#CFE0F1;
+border-color:#ffffff #ffffff #cccccc #ffffff;
+border-style:solid solid solid none;
+border-width:1px 0px 1px 0px;
+white-space:nowrap;
+}
+</style>
+<script type="text/javascript">
+window.apex_search = {};
+apex_search.init = function (){
+	this.rows = document.getElementById('data').getElementsByTagName('TR');
+	this.rows_length = apex_search.rows.length;
+	this.rows_text =  [];
+	for (var i=0;i<apex_search.rows_length;i++){
+        this.rows_text[i] = (apex_search.rows[i].innerText)?apex_search.rows[i].innerText.toUpperCase():apex_search.rows[i].textContent.toUpperCase();
+	}
+	this.time = false;
+}
+
+apex_search.lsearch = function(){
+	this.term = document.getElementById('S').value.toUpperCase();
+	for(var i=0,row;row = this.rows[i],row_text = this.rows_text[i];i++){
+		row.style.display = ((row_text.indexOf(this.term) != -1) || this.term  === '')?'':'none';
+	}
+	this.time = false;
+}
+
+apex_search.search = function(e){
+    var keycode;
+    if(window.event){keycode = window.event.keyCode;}
+    else if (e){keycode = e.which;}
+    else {return false;}
+    if(keycode == 13){
+		apex_search.lsearch();
+	}
+    else{return false;}
+}</script>
+</head><body onload="apex_search.init();">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td><input type="text" size="30" maxlength="1000" value="" id="S" onkeyup="apex_search.search(event);" /><input type="button" value="Search" onclick="apex_search.lsearch();"/> 
+</td></tr>
+</tbody></table>
+<br>
+<table border="0" cellpadding="0" cellspacing="0">
+<tr>	<th>ORDER_NUM</th>
+	<th>ORDER_DATE</th>
+	<th>PRODUCT</th>
+	<th>AMOUNT</th>
+	<th>TEXT</th>
+	<th>IMG</th>
+	<th>F_NAME</th>
+	<th>I_NAME</th>
+</tr>
+<tbody id="data">
+
+	<tr>
+<td align="right">1</td>
+<td>21-11-2019</td>
+<td>CHAIR</td>
+<td align="right">200</td>
+<td></td>
+<td>(BLOB)</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">2</td>
+<td>03-06-2017</td>
+<td>TABLE</td>
+<td align="right">400</td>
+<td></td>
+<td>(BLOB)</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">3</td>
+<td>10-11-2008</td>
+<td>BED</td>
+<td align="right">100</td>
+<td>Here's my favorite story on recursion: it happened that a famous Darwinist was
+telling a story about primitive creation myths. "Some peoples," he said, "believe the
+world rests on the back of a great turtle. Of course, that raises the question: on what
+does the turtle rest?"
+An elderly woman from the back of the room stood up and said, "Very clever,
+Sonny, but it's turtles, all the way down."</td>
+<td>(BLOB)</td>
+<td>1.txt</td>
+<td>1.jpg</td>
+	</tr>
+	<tr>
+<td align="right">4</td>
+<td>12-10-2017</td>
+<td>BATH</td>
+<td align="right">140</td>
+<td></td>
+<td>(BLOB)</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">5</td>
+<td>30-11-2016</td>
+<td>CHANDELIER</td>
+<td align="right">160</td>
+<td></td>
+<td>(BLOB)</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">6</td>
+<td>02-02-2015</td>
+<td>LAMP</td>
+<td align="right">240</td>
+<td></td>
+<td>(BLOB)</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+	</tr>
+	<tr>
+<td align="right">7</td>
+<td>17-11-2014</td>
+<td>FIREPLACE</td>
+<td align="right">220</td>
+<td></td>
+<td>(BLOB)</td>
+<td>&nbsp;</td>
+<td>2.jpg</td>
+	</tr>
+</tbody></table><!-- SQL:
+select /*txt*/ * from ordrs--></body></html>
